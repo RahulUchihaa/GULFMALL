@@ -28,7 +28,6 @@ const {width, height} = Dimensions.get('window');
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [todaysoffersIndex, setTodaysOffersIndex] = useState(0);
-  const [eventsIndex, setEventsIndex] = useState(0);
   const flatListRef = useRef(null);
 
   const data: DataItem[] = [
@@ -78,53 +77,6 @@ const Home = () => {
       date: '25 JAN - 05 APR',
     },
   ];
-
-  const events = [
-    {
-      id: '1',
-      imageUrl:
-        'https://images.unsplash.com/photo-1552611052-d59a0d9741bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-      tagLine: 'This is a dummy Tag Line',
-      floor: 'First Floor',
-    },
-    {
-      id: '2',
-      imageUrl:
-        'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-
-      tagLine: 'A dinner expereince like no other',
-      floor: 'Second Floor',
-    },
-    {
-      id: '3',
-      imageUrl:
-        'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGZvb2R8ZW58MHx8MHx8fDA%3D',
-      tagLine: 'The dessert that leaves you satisfied',
-      floor: 'Ground Floor',
-    },
-    {
-      id: '4',
-      imageUrl:
-        'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      tagLine: 'This is a dummy Tag Line',
-      floor: 'Third Floor',
-    },
-    {
-      id: '5',
-      imageUrl:
-        'https://images.unsplash.com/photo-1432139509613-5c4255815697?q=80&w=1885&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      tagLine: 'A dinner expereince like no other',
-      floor: 'First Floor',
-    },
-    {
-      id: '6',
-      imageUrl:
-        'https://images.unsplash.com/photo-1496412705862-e0088f16f791?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      tagLine: 'The dessert that leaves you satisfied',
-      floor: 'Ground Floor',
-    },
-  ];
-
   return (
     <ScrollView style={{flex: 1, backgroundColor: '#1a1a1a'}}>
       <ImageBackground
@@ -157,7 +109,8 @@ const Home = () => {
             style={{marginRight: -3, marginLeft: 3}}
           />
         </TouchableOpacity>
-        <View style={styles.sliderContainer}>
+      </ImageBackground>
+      <View style={styles.sliderContainer}>
           <FlatList
             ref={flatListRef}
             data={data}
@@ -176,7 +129,6 @@ const Home = () => {
             showsHorizontalScrollIndicator={false}
           />
         </View>
-      </ImageBackground>
       <Pagination data={data} index={activeIndex} />
       <View style={styles.todayOffers}>
         <Text
@@ -268,19 +220,18 @@ export default Home;
 const styles = StyleSheet.create({
   backgroundImage: {
     width: '100%',
-    height: height,
+    height: height-200,
     resizeMode: 'cover',
   },
   sliderContainer: {
     padding: 20,
-    bottom: 0,
-    position: 'absolute',
+    borderRadius:10,
     justifyContent: 'center',
     alignItems: 'center',
   },
   contentContainer: {
     position: 'absolute',
-    bottom: 310,
+    bottom: 130,
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center',
@@ -314,7 +265,7 @@ const styles = StyleSheet.create({
   },
   button: {
     position: 'absolute',
-    bottom: 230,
+    bottom: 30,
     alignSelf: 'center',
     backgroundColor: 'rgba(0,0,0,0.5)',
     borderWidth: 1,

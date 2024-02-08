@@ -19,9 +19,8 @@ const RenderTodaysOffers: FC<RenderTodaysOffersProps> = ({ item }) => {
     <View style={styles.sliderContent}>
       <Image source={{ uri: item.imageUrl }} style={styles.sliderItemBackground} />
       <LinearGradient
-      colors={['transparent', 'rgba(0,0,0,0.6)', 'rgba(0,0,0,0.7)']}
-      style={styles.gradientOverlay} 
-    />
+          colors={['transparent', 'rgba(0,0,0,0.2)', 'rgba(0,0,0,0.2)']}
+          style={styles.gradient}>
       <View style={styles.textContainer}>
         <View style={styles.companyView}>
         <Text style={styles.companyText}>{item.company}</Text>
@@ -29,6 +28,7 @@ const RenderTodaysOffers: FC<RenderTodaysOffersProps> = ({ item }) => {
         <Text style={styles.tagLineText}>{item.tagLine}</Text>
         <Text style={styles.dateText}>{item.date}</Text>
       </View>
+      </LinearGradient>
     </View>
   );
 };
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     right: 20,
   },
   companyText: {
-    color: Colors.black,
+    color: Colors.Iconwhite,
     fontSize: 14,
     textAlign:'center',
     fontWeight: 'bold',
@@ -73,16 +73,23 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight:'bold',
     marginTop: 5,
+    textShadowColor: 'rgba(0, 0, 0, 0.95)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10,
+    
   },
   dateText: {
     color: Colors.Iconwhite,
     fontSize: 13,
     fontWeight:'bold',
     marginTop: 5,
+    textShadowColor: 'rgba(0, 0, 0, 0.95)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10,
   },
   companyView:{
     padding:5,
-    backgroundColor:Colors.Iconwhite,
+    backgroundColor:Colors.primary,
     width:100,
     justifyContent:'center',
     borderRadius:20

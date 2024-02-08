@@ -18,30 +18,30 @@ const MainNavigator: React.FC = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: Colors.primary,
+        tabBarActiveTintColor: Colors.black,
         tabBarLabelStyle: {
           fontSize: 14,
         },
         tabBarStyle: {
           padding: 2,
           height: Platform.OS === 'ios' ? 70 : 62,
-          backgroundColor: Colors.backgroundS,
+          backgroundColor: Colors.Iconwhite,
           
         },
-        tabBarBackground: () => (
-          <BlurView
-            overlayColor=""
-            blurAmount={15}
-            reducedTransparencyFallbackColor="white"
-            style={{
-              position: 'absolute',
-              top: 0,
-              bottom: 0,
-              left: 0,
-              right: 0             
-            }}
-          />
-        ),
+        // tabBarBackground: () => (
+        //   <BlurView
+        //     overlayColor=""
+        //     blurAmount={15}
+        //     reducedTransparencyFallbackColor="white"
+        //     style={{
+        //       position: 'absolute',
+        //       top: 0,
+        //       bottom: 0,
+        //       left: 0,
+        //       right: 0             
+        //     }}
+        //   />
+        // ),
         headerShown: false,
         tabBarShowLabel: false,
       }}>

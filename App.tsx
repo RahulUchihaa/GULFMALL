@@ -14,7 +14,7 @@ const Main = () => {
   return (
     
      <>
-       <Navigation colorScheme={colorScheme} />
+      <Navigation colorScheme={colorScheme} />
       <ConnectionListener />
       <StatusBar />
      </>

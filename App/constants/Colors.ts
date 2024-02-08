@@ -2,7 +2,8 @@ const tintColorLight = '#2f95dc';
 const tintColorDark = '#fff';
 
 export const white = '#fff';
-export const black = '#000';
+export const black = '#010100';
+export const grey = "#717171";
 export const backgroundS = "#1a1a1a";
 // export const primary = '#125F52';
 export const primary = '#895124';
@@ -22,6 +23,7 @@ export default {
   danger,
   disabled,
   black,
+  grey,
   white,
   light: '#DEDEDE',
   brand: primary,

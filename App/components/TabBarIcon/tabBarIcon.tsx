@@ -29,11 +29,11 @@ const TabIcon: React.FC<TabIconProps> = ({
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Icon name={name} color={focused ? Colors.Iconwhite : color } size={size} />
+        <Icon name={name} color={focused ? Colors.primary : color } size={size} />
       </View>
       <Text
         size={10}
-        style={{color: focused ? Colors.Iconwhite : color ,  fontWeight: focused ? 'bold' : 'normal', marginBottom: 5, marginTop: 1, fontSize: 12,textAlign:'center'}}>
+        style={{color: focused ? Colors.primary : color ,  fontWeight: focused ? 'bold' : 'normal', marginBottom: 5, marginTop: 1, fontSize: 12,textAlign:'center'}}>
         {label}
       </Text>
     </View>
