@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor:Colors.Iconwhite,
     alignItems: 'center',
-    marginTop: 5
+    elevation:3,
+    height:50
   },
   iconContainer: {
     marginHorizontal: 20,

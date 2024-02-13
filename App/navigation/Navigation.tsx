@@ -6,13 +6,17 @@ import theme from './theme';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import MainNavigator from './MainNavigator';
 import AnimatedSplash from '../screens/AnimatedSplash';
+import Shop from '../screens/Shop';
+import ShopsBasedOnCategories from '../components/Shop/ShopsBasedOnCategories';
 
 
 
 export type RootStackParamList = {
   Root: any;
   NotFound: undefined;
-  Splash:undefined
+  Splash:undefined;
+  Shop:any;
+  ShopsCategories:any;
 };
 
 // If you are not familiar with React Navigation, we recommend going through the
@@ -62,7 +66,9 @@ function RootNavigator() {
        
       <Stack.Screen name="Root" component={MainNavigator} />
       <Stack.Screen name="Splash" component={AnimatedSplash} />
+      <Stack.Screen name="Shop" component={Shop} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen name="ShopsCategories" component={ShopsBasedOnCategories}  />
     </Stack.Navigator>
   );
 }
