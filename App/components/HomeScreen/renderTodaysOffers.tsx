@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     right: 20,
   },
   companyText: {
-    color: Colors.Iconwhite,
+    color: Colors.black,
     fontSize: 14,
     textAlign:'center',
     fontWeight: 'bold',
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   companyView:{
     padding:5,
-    backgroundColor:Colors.primary,
+    backgroundColor:Colors.Iconwhite,
     width:100,
     justifyContent:'center',
     borderRadius:20

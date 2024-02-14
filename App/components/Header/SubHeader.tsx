@@ -5,22 +5,36 @@ import Icon2 from 'react-native-vector-icons/FontAwesome5';
 import Colors from '../../constants/Colors';
 import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 type SubHeaderProps = {
   Heading: string;
 };
 
 const SubHeader: React.FC<SubHeaderProps> = ({Heading}) => {
+  const [isRtl, setIsRtl] = React.useState(i18next.language);
+  React.useEffect(() => {
+    const languageChangeHandler = () => {
+      setIsRtl(i18next.language);
+    };
+   i18next.on('languageChanged', languageChangeHandler);
+   
+    return () => {
+      i18next.off('languageChanged', languageChangeHandler);
+    }
+  }, []);
   const navigation = useNavigation();
+  const {t} = useTranslation();
   return (
     <View style={styles.container}>
       <View style={styles.iconContainer}>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <Icon2
-            name={'arrow-left'}
+            name={isRtl==='ar'?'arrow-right':'arrow-left'}
             color={Colors.black}
             size={18}
-            style={styles.icon}
+            style={[styles.icon,{marginLeft:isRtl==='ar'?8:0 , marginRight : isRtl === 'ar' ? 0 : 8}]}
           />
         </TouchableOpacity>
 
@@ -76,7 +90,7 @@ export default SubHeader;
 const styles = StyleSheet.create({
   container: {
     padding: 5,
-    flexDirection: 'row',
+    flexDirection:'row',
     justifyContent: 'space-between',
     backgroundColor: Colors.Iconwhite,
     alignItems: 'center',
@@ -85,7 +99,7 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     marginHorizontal: 15,
-    flexDirection: 'row',
+    flexDirection:'row',
     alignItems: 'center',
   },
   logoTextContainer: {
