@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View,Image,Dimensions } from 'react-native'
+import { StyleSheet, Text, View,Image,Dimensions,TouchableOpacity } from 'react-native'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../constants/Colors';
+import { useNavigation } from '@react-navigation/native';
 
 const {width} = Dimensions.get('window');
 const imageWidth = 200;
@@ -17,7 +18,11 @@ type RenderEventsProps = {
 }
 
 const RenderEvents:React.FC<RenderEventsProps> = ({item,}) => {
+  const navigation = useNavigation();
   return (
+    <TouchableOpacity  onPress={()=>navigation.navigate("ShopOfferDetails",{
+      details:"dummy details",imageUrl:item.imageUrl
+    })}>
     <View style={styles.slideContainer}>
     <Image
       source={{uri: item.imageUrl}}
@@ -35,6 +40,7 @@ const RenderEvents:React.FC<RenderEventsProps> = ({item,}) => {
     </View>
     </LinearGradient>
   </View>
+  </TouchableOpacity>
   )
 }
 

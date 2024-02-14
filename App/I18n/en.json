@@ -1,0 +1,18 @@
+{
+    "home":{
+        "home":"Home",
+        "gulf_mall" :"Gulf Mall",
+        "view_all" :"View All",
+        "trending_events" :"Trending Events",
+        "todays_exclusive":"Today's Exclusive Offers",
+        "visit_list":"My Visit List",
+        "basement":"Basement",
+        "first_floor":"First Floor",
+        "second_floor" : "Second Floor",
+        "third_floor" : "Third Floor",
+        "manage" : "Manage my VisitList",
+        "shopping":"Shopping",
+        "dining":"Dining",
+        "entertain" : "Entertain"
+    }
+}

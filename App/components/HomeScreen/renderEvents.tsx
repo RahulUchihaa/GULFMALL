@@ -10,6 +10,8 @@ import {
 import Colors from '../../constants/Colors';
 import LinearGradient from 'react-native-linear-gradient';
 import Pagination from './Pagination';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 const {width} = Dimensions.get('window');
 const events = [
@@ -67,8 +69,12 @@ type EventsProps = {
 
 
 const EventCard = ({ imageUrl, tagLine, floor }: EventsProps) => {
+  const navigation = useNavigation();
     return (
-      <View style={styles.card}>
+      <TouchableOpacity  onPress={()=>navigation.navigate("ShopOfferDetails",{
+        details:"dummy details",imageUrl:imageUrl
+      })}>
+ <View style={styles.card}>
         <Image source={{ uri: imageUrl }} style={styles.image} />
         <LinearGradient
         colors={['rgba(0, 0, 0, 0.8)', 'transparent']} 
@@ -84,6 +90,8 @@ const EventCard = ({ imageUrl, tagLine, floor }: EventsProps) => {
         </View>
       </LinearGradient>
       </View>
+      </TouchableOpacity>
+     
     );
   };
 

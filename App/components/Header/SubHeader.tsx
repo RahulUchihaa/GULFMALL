@@ -15,7 +15,7 @@ const SubHeader: React.FC<SubHeaderProps> = ({Heading}) => {
   return (
     <View style={styles.container}>
       <View style={styles.iconContainer}>
-        <TouchableOpacity onPress={()=>navigation.goBack()}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <Icon2
             name={'arrow-left'}
             color={Colors.black}
@@ -28,13 +28,17 @@ const SubHeader: React.FC<SubHeaderProps> = ({Heading}) => {
           <Text style={styles.logoName}>{Heading}</Text>
         </View>
       </View>
+
       <View style={styles.iconContainer}>
-      <Icon
+        <TouchableOpacity
+          onPress={() => navigation.navigate('ShopsCategories')}>
+          <Icon
             name={'search'}
             color={Colors.black}
             size={18}
-            style={[styles.icon,{marginRight:20}]}
+            style={[styles.icon, {marginRight: 20}]}
           />
+        </TouchableOpacity>
         <View>
           <Icon
             name={'bell-o'}
@@ -42,6 +46,7 @@ const SubHeader: React.FC<SubHeaderProps> = ({Heading}) => {
             size={18}
             style={styles.icon}
           />
+
           <View
             style={{
               width: 7,
@@ -75,8 +80,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: Colors.Iconwhite,
     alignItems: 'center',
-    elevation:3,
-    height:50
+    elevation: 3,
+    height: 50,
   },
   iconContainer: {
     marginHorizontal: 15,

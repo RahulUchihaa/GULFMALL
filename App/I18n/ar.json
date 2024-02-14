@@ -1,0 +1,18 @@
+{
+    "home":{
+        "home":"بيت",
+        "gulf_mall" :"جلف مول",
+        "view_all" :"عرض الكل",
+        "trending_events" :"الأحداث الشائعة",
+        "todays_exclusive":"عروض اليوم الحصرية",
+        "visit_list":"قائمة زيارتي",
+        "basement":"البدروم",
+        "first_floor":"الطابق الأول",
+        "second_floor" : "الطابق الثاني",
+        "third_floor" : "الطابق الثالث",
+        "manage" : "إدارة قائمة زياراتي",
+        "shopping":"تسوق",
+        "dining":"تناول الطعام",
+        "entertain" : "ترفيه"
+    }
+}

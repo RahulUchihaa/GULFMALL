@@ -16,6 +16,7 @@ import RenderSliders from '../components/Dashboard/RenderSliders';
 import Header from '../components/Header/Header';
 import RenderTodaysOffers from '../components/HomeScreen/renderTodaysOffers';
 import Colors from '../constants/Colors';
+import { useTranslation } from 'react-i18next';
 
 const {width} = Dimensions.get('window');
 
@@ -23,6 +24,7 @@ const Home = ({navigation}:any) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [EventsactiveIndex, setActiveEventsIndex] = useState(0);
   const [todaysoffersIndex, setTodaysOffersIndex] = useState(0);
+  const {t} = useTranslation();
 
   const data2 = [
     {
@@ -160,7 +162,7 @@ const Home = ({navigation}:any) => {
                 style={styles.icon}
               />
             </View>
-            <Text style={styles.menuText}>Shopping</Text>
+            <Text style={styles.menuText}>{t('home.shopping')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.menuButton} onPress={()=>handleNavigation("Shop")}>
             <View style={styles.iconBackground}>
@@ -171,7 +173,7 @@ const Home = ({navigation}:any) => {
                 style={styles.icon}
               />
             </View>
-            <Text style={styles.menuText}>Dining</Text>
+            <Text style={styles.menuText}>{t('home.dining')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.menuButton} onPress={()=>handleNavigation("Shop")}>
             <View style={styles.iconBackground}>
@@ -182,14 +184,14 @@ const Home = ({navigation}:any) => {
                 style={styles.icon}
               />
             </View>
-            <Text style={styles.menuText}>Entertain</Text>
+            <Text style={styles.menuText}>{t('home.entertain')}</Text>
           </TouchableOpacity>
         </View>
         {/* Events */}
         <View style={styles.Heading}>
           <View style={styles.HeadingView}>
-            <Text style={styles.HeadingText}>Trending Events</Text>
-            <Text style={styles.ViewAllText}>View All</Text>
+            <Text style={styles.HeadingText}>{t('home.trending_events')}</Text>
+            <Text style={styles.ViewAllText}>{t('home.view_all')}</Text>
           </View>
           <FlatList
             data={Events}

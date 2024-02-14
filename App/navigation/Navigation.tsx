@@ -8,6 +8,8 @@ import MainNavigator from './MainNavigator';
 import AnimatedSplash from '../screens/AnimatedSplash';
 import Shop from '../screens/Shop';
 import ShopsBasedOnCategories from '../components/Shop/ShopsBasedOnCategories';
+import CompanyDetailsScreen from '../components/Shop/CompanyDetailsScreen';
+import ShopOffersDetails from '../components/Shop/ShopOffersDetails';
 
 
 
@@ -17,6 +19,8 @@ export type RootStackParamList = {
   Splash:undefined;
   Shop:any;
   ShopsCategories:any;
+  CompanyDetails:any;
+  ShopOfferDetails:any;
 };
 
 // If you are not familiar with React Navigation, we recommend going through the
@@ -69,6 +73,8 @@ function RootNavigator() {
       <Stack.Screen name="Shop" component={Shop} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen name="ShopsCategories" component={ShopsBasedOnCategories}  />
+      <Stack.Screen name="CompanyDetails" component={CompanyDetailsScreen}  />
+      <Stack.Screen name="ShopOfferDetails" component={ShopOffersDetails}  />
     </Stack.Navigator>
   );
 }

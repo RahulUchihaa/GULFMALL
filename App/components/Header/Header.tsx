@@ -2,8 +2,18 @@ import React from 'react';
 import {StyleSheet, Image, View, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Colors from '../../constants/Colors';
+import i18next, {languageResources} from '../../I18n/il8n';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Header = () => {
+  const changeLng = () => {
+    const currentLanguage = i18next.language;
+  
+    const newLanguage = currentLanguage === 'en' ? 'ar' : 'en';
+  
+    i18next.changeLanguage(newLanguage);
+  };
+  
   return (
     <View style={styles.container}>
       <View style={styles.iconContainer}>
@@ -16,7 +26,12 @@ const Header = () => {
         </View>
       </View>
       <View style={styles.iconContainer}>
+        <TouchableOpacity onPress={changeLng}>
+        <Icon name={'language'} color={Colors.black} size={18} style={[styles.icon,{marginRight:10}]} />
+        </TouchableOpacity>
+    
         <View>
+          
         <Icon name={'bell-o'} color={Colors.black} size={18} style={styles.icon} />
         <View style={{width:7,borderRadius:30,backgroundColor:Colors.primary,position:'absolute',bottom:12,left:10,right:0,height:7}}>
 
