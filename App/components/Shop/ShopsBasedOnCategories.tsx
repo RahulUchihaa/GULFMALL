@@ -12,10 +12,22 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../../constants/Colors';
 import {useNavigation} from '@react-navigation/native';
 import { Divider } from 'react-native-paper';
+import i18next from 'i18next';
 
 const ShopsBasedOnCategories = () => {
   const [searchText, setSearchText] = useState('');
   const navigation = useNavigation();
+  const [isRtl, setIsRtl] = React.useState(i18next.language);
+  React.useEffect(() => {
+    const languageChangeHandler = () => {
+      setIsRtl(i18next.language);
+    };
+   i18next.on('languageChanged', languageChangeHandler);
+   
+    return () => {
+      i18next.off('languageChanged', languageChangeHandler);
+    }
+  }, []);
 
   // Dummy data for FlatList
   const data = [
@@ -113,10 +125,10 @@ const ShopsBasedOnCategories = () => {
   const renderItem = ({item}) => (
     <TouchableOpacity onPress={()=>navigation.navigate("CompanyDetails",{companyName:item.companyName,
       floor:item.floor,image:item.image})}>
-      <View style={styles.listItem}>
+      <View style={[styles.listItem,{flexDirection: isRtl === 'ar' ? 'row-reverse' : 'row'}]}>
         <Image source={{uri: item.image}} style={styles.image} />
-        <View style={styles.textContainer}>
-          <Text style={styles.companyName}>{item.companyName}</Text>
+        <View style={[styles.textContainer,{flexDirection: isRtl === 'ar' ? 'row-reverse' : 'row'}]}>
+          <Text style={[styles.companyName,{marginRight:isRtl === 'ar' ? 10:0}]}>{item.companyName}</Text>
           <Text style={styles.floorText}>{item.floor.toUpperCase()}</Text>
         </View>
          {/* Add Divider */}
@@ -129,16 +141,16 @@ const ShopsBasedOnCategories = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      <View style={[styles.header,{flexDirection: isRtl === 'ar' ? 'row-reverse' : 'row'}]}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Icon
-            name="arrow-back"
+            name= {isRtl === 'ar' ? 'arrow-forward':'arrow-back'}
             size={30}
             color="black"
-            style={styles.backIcon}
+            style={[styles.backIcon,{marginRight: isRtl === 'ar' ? 0 : 10,marginLeft:isRtl === 'ar' ? 10:0}]}
           />
         </TouchableOpacity>
-        <View style={styles.searchBarContainer}>
+        <View style={[styles.searchBarContainer,{flexDirection:isRtl === 'ar' ? 'row-reverse' : 'row'}]}>
           <Icon
             name="search"
             size={20}
