@@ -4,25 +4,29 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Colors from '../../constants/Colors';
 import i18next, {languageResources} from '../../I18n/il8n';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
+  const currentLanguage = i18next.language;
   const changeLng = () => {
     const currentLanguage = i18next.language;
-  
     const newLanguage = currentLanguage === 'en' ? 'ar' : 'en';
-  
     i18next.changeLanguage(newLanguage);
   };
+
+  const {t} = useTranslation();
+
+  
   
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,{flexDirection:currentLanguage === 'ar' ? "row-reverse" : "row"}]}>
       <View style={styles.iconContainer}>
         <Image
           source={require('../../assets/images/logo.png')}
           style={{height: 40, width: 40}}
         />
         <View style={styles.logoTextContainer}>
-          <Text style={styles.logoName}>GULF MALL</Text>
+          <Text style={styles.logoName}>{t('home.gulf_mall')}</Text>
         </View>
       </View>
       <View style={styles.iconContainer}>

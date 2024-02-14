@@ -15,7 +15,7 @@ const SubHeader: React.FC<SubHeaderProps> = ({Heading}) => {
   return (
     <View style={styles.container}>
       <View style={styles.iconContainer}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <Icon2
             name={'arrow-left'}
             color={Colors.black}

@@ -7,12 +7,24 @@
         "todays_exclusive":"عروض اليوم الحصرية",
         "visit_list":"قائمة زيارتي",
         "basement":"البدروم",
+        "ground_floor":"الطابق الأرضي",
         "first_floor":"الطابق الأول",
         "second_floor" : "الطابق الثاني",
         "third_floor" : "الطابق الثالث",
         "manage" : "إدارة قائمة زياراتي",
         "shopping":"تسوق",
         "dining":"تناول الطعام",
-        "entertain" : "ترفيه"
+        "entertain" : "ترفيه",
+        "shop_by_category":"تسوق حسب الفئة",
+        "discover":"اكتشف أفضل المتاجر",
+        "have_you_tried":"هل حاولت",
+        "about":"عن",
+        "store_details":"تفاصيل المتجر",
+        "add_to_Visitlist":"أضف إلى قائمة زيارتك",
+        "save_for_later" :"حفظ لوقت لاحق",
+        "shop":"محل",
+        "map":"خريطة",
+        "services":"خدمات",
+        "more":"أكثر"
     }
 }

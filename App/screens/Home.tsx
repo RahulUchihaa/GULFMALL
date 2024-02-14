@@ -17,10 +17,12 @@ import Header from '../components/Header/Header';
 import RenderTodaysOffers from '../components/HomeScreen/renderTodaysOffers';
 import Colors from '../constants/Colors';
 import { useTranslation } from 'react-i18next';
+import i18next from '../I18n/il8n';
 
 const {width} = Dimensions.get('window');
 
 const Home = ({navigation}:any) => {
+  const currentLanguage = i18next.language;
   const [activeIndex, setActiveIndex] = useState(0);
   const [EventsactiveIndex, setActiveEventsIndex] = useState(0);
   const [todaysoffersIndex, setTodaysOffersIndex] = useState(0);
@@ -152,7 +154,7 @@ const Home = ({navigation}:any) => {
         </View>
 
         {/* Menu Part */}
-        <View style={styles.menuContainer}>
+        <View style={[styles.menuContainer,{flexDirection: currentLanguage === 'ar' ? "row-reverse" : 'row'}]}>
           <TouchableOpacity style={styles.menuButton} onPress={()=>handleNavigation("Shop")}>
             <View style={styles.iconBackground}>
               <Icon
@@ -162,7 +164,7 @@ const Home = ({navigation}:any) => {
                 style={styles.icon}
               />
             </View>
-            <Text style={styles.menuText}>{t('home.shopping')}</Text>
+            <Text style={[styles.menuText,{writingDirection : currentLanguage === 'ar' ? 'rtl' : 'ltr'}]}>{t('home.shopping')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.menuButton} onPress={()=>handleNavigation("Shop")}>
             <View style={styles.iconBackground}>
@@ -173,7 +175,7 @@ const Home = ({navigation}:any) => {
                 style={styles.icon}
               />
             </View>
-            <Text style={styles.menuText}>{t('home.dining')}</Text>
+            <Text style={[styles.menuText,{writingDirection : currentLanguage === 'ar' ? 'rtl' : 'ltr'}]}>{t('home.dining')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.menuButton} onPress={()=>handleNavigation("Shop")}>
             <View style={styles.iconBackground}>
@@ -184,12 +186,12 @@ const Home = ({navigation}:any) => {
                 style={styles.icon}
               />
             </View>
-            <Text style={styles.menuText}>{t('home.entertain')}</Text>
+            <Text style={[styles.menuText,{writingDirection : currentLanguage === 'ar' ? 'rtl' : 'ltr'}]}>{t('home.entertain')}</Text>
           </TouchableOpacity>
         </View>
         {/* Events */}
         <View style={styles.Heading}>
-          <View style={styles.HeadingView}>
+          <View style={[styles.HeadingView,{flexDirection: currentLanguage === 'ar' ? 'row-reverse' : 'row'}]}>
             <Text style={styles.HeadingText}>{t('home.trending_events')}</Text>
             <Text style={styles.ViewAllText}>{t('home.view_all')}</Text>
           </View>
@@ -213,8 +215,8 @@ const Home = ({navigation}:any) => {
 
         {/* Offers */}
         <View style={styles.Heading}>
-          <View style={styles.HeadingView}>
-            <Text style={styles.HeadingText}>Today's Exclusive Offers</Text>
+          <View style={[styles.HeadingView,{flexDirection:currentLanguage === 'ar' ? 'row-reverse' : 'row'}]}>
+            <Text style={styles.HeadingText}>{t('home.todays_exclusive')}</Text>
           </View>
         </View>
         <View style={{marginBottom: 20}}>
@@ -255,7 +257,7 @@ const Home = ({navigation}:any) => {
                 fontSize: 20,
                 fontWeight: 'bold',
               }}>
-              My Visit List
+              {t('home.visit_list')}
             </Text>
           </View>
         </View>
@@ -297,7 +299,7 @@ const Home = ({navigation}:any) => {
 
           <View style={{justifyContent:'center',marginTop:20,marginBottom:20,alignItems:'center'}}>
         <TouchableOpacity style={{backgroundColor:Colors.primary,padding:6,borderRadius:20,width:200}}>
-            <Text style={{color:Colors.Iconwhite,fontWeight:'bold',textAlign:'center'}}>Manage my VisitList</Text>
+            <Text style={{color:Colors.Iconwhite,fontWeight:'bold',textAlign:'center'}}> {t('home.manage')}</Text>
           </TouchableOpacity>
         </View>
         </View>
