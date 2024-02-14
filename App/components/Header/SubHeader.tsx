@@ -27,8 +27,8 @@ const SubHeader: React.FC<SubHeaderProps> = ({Heading}) => {
   const navigation = useNavigation();
   const {t} = useTranslation();
   return (
-    <View style={styles.container}>
-      <View style={styles.iconContainer}>
+    <View style={[styles.container,{flexDirection: isRtl === 'ar' ? 'row-reverse' : 'row'}]}>
+      <View style={[styles.iconContainer,,{flexDirection: isRtl === 'ar' ? 'row-reverse' : 'row'}]}>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <Icon2
             name={isRtl==='ar'?'arrow-right':'arrow-left'}
