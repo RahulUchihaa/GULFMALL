@@ -14,10 +14,25 @@ import {ScrollView} from 'react-native-gesture-handler';
 import RenderEvents from '../components/Dashboard/RenderEvents';
 import RenderShops from '../components/Dashboard/RenderShops';
 import RenderShopCategories from '../components/Dashboard/RenderShopCategories';
+import {useTranslation} from 'react-i18next';
+import i18next from 'i18next';
 
 const {width} = Dimensions.get('window');
 
 const Shop = () => {
+  const [isRtl, setIsRtl] = React.useState(i18next.language);
+  React.useEffect(() => {
+    const languageChangeHandler = () => {
+      setIsRtl(i18next.language);
+    };
+   i18next.on('languageChanged', languageChangeHandler);
+   
+    return () => {
+      i18next.off('languageChanged', languageChangeHandler);
+    }
+  }, []);
+
+  const {t} = useTranslation();
   const data2 = [
     {
       id: '1',
@@ -145,108 +160,123 @@ const Shop = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <ScrollView style={Styles.Container}>
-      <SubHeader Heading="Shop" />
+    <View style={Styles.Container}>
+      <SubHeader Heading={t('home.shop')} />
+      <ScrollView style={Styles.Container}>
+        {/* Sliders */}
+        <View>
+          <FlatList
+            data={data2}
+            renderItem={({item}) => (
+              <RenderSliders
+                item={item}
+                dataLength={data2}
+                currentIndex={activeIndex}
+              />
+            )}
+            keyExtractor={item => item.id}
+            horizontal
+            onScroll={data =>
+              setActiveIndex(
+                Math.round(data.nativeEvent.contentOffset.x / width),
+              )
+            }
+            snapToAlignment="center"
+            decelerationRate={'fast'}
+            pagingEnabled={true}
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
 
-      {/* Sliders */}
-      <View>
-        <FlatList
-          data={data2}
-          renderItem={({item}) => (
-            <RenderSliders
-              item={item}
-              dataLength={data2}
-              currentIndex={activeIndex}
-            />
-          )}
-          keyExtractor={item => item.id}
-          horizontal
-          onScroll={data =>
-            setActiveIndex(Math.round(data.nativeEvent.contentOffset.x / width))
-          }
-          snapToAlignment="center"
-          decelerationRate={'fast'}
-          pagingEnabled={true}
-          showsHorizontalScrollIndicator={false}
-        />
-      </View>
-
-      <View style={Styles.Heading}>
-        <View style={[Styles.HeadingView, {justifyContent: 'flex-start'}]}>
-          <Text
-            style={{
-              color: Colors.black,
-              textAlign: 'left',
-              fontSize: 20,
-              fontWeight: 'bold',
-            }}>
-            Shop By Category
-          </Text>
+        <View style={Styles.Heading}>
+          <View
+            style={[
+              Styles.HeadingView,
+              {
+                justifyContent: 'flex-start',
+                flexDirection: isRtl === 'ar' ? 'row-reverse' : 'row'
+              },
+            ]}>
+            <Text
+              style={{
+                color: Colors.black,
+                textAlign: 'left',
+                fontSize: 20,
+                fontWeight: 'bold',
+              }}>
+              {t('home.shop_by_category')}
+            </Text>
+          </View>
         </View>
-      </View>
-      <View style={{paddingLeft: 10, paddingRight: 10}}>
-        <FlatList
-          data={Category}
-          horizontal
-          renderItem={({item})=><RenderShopCategories item={item} />}
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={item => item.id}
-        />
-      </View>
-      <View style={Styles.Heading}>
-        <View style={[Styles.HeadingView]}>
-          <Text
-            style={{
-              color: Colors.black,
-              textAlign: 'left',
-              fontSize: 20,
-              fontWeight: 'bold',
-            }}>
-            Discover Top Shops
-          </Text>
-          <Text
-            style={{
-              color: Colors.primary,
-              textAlign: 'right',
-              fontSize: 18,
-              fontWeight: 'bold',
-            }}>
-            View All
-          </Text>
+        <View style={{paddingLeft: 10, paddingRight: 10}}>
+          <FlatList
+            data={Category}
+            horizontal
+            renderItem={({item}) => <RenderShopCategories item={item} />}
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={item => item.id}
+          />
         </View>
-      </View>
-      <View style={{paddingLeft: 10, paddingRight: 10}}>
-        <FlatList
-          data={ShopBrands}
-          horizontal
-          renderItem={({item})=><RenderShops item={item} />}
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={item => item.id}
-        />
-      </View>
-      <View style={Styles.Heading}>
-        <View style={[Styles.HeadingView]}>
-          <Text
-            style={{
-              color: Colors.black,
-              textAlign: 'left',
-              fontSize: 20,
-              fontWeight: 'bold',
-            }}>
-            Have you Tried
-          </Text>
+        <View style={Styles.Heading}>
+          <View
+            style={[
+              Styles.HeadingView,
+              {flexDirection: isRtl === 'ar' ? 'row-reverse' : 'row'}
+            ]}>
+            <Text
+              style={{
+                color: Colors.black,
+                textAlign: 'left',
+                fontSize: 20,
+                fontWeight: 'bold',
+              }}>
+              {t('home.discover')}
+            </Text>
+            <Text
+              style={{
+                color: Colors.primary,
+                textAlign: 'right',
+                fontSize: 18,
+                fontWeight: 'bold',
+              }}>
+              {t('home.view_all')}
+            </Text>
+          </View>
         </View>
-        <FlatList
-        data={Events}
-        renderItem={({item}) => <RenderEvents item={item} />}
-        keyExtractor={item => item.id}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-      
-      />
-      </View>
-   
-    </ScrollView>
+        <View style={{paddingLeft: 10, paddingRight: 10}}>
+          <FlatList
+            data={ShopBrands}
+            horizontal
+            renderItem={({item}) => <RenderShops item={item} />}
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={item => item.id}
+          />
+        </View>
+        <View style={Styles.Heading}>
+          <View
+            style={[
+              Styles.HeadingView,{flexDirection: isRtl === 'ar' ? 'row-reverse' : 'row'}
+            ]}>
+            <Text
+              style={{
+                color: Colors.black,
+                textAlign: 'left',
+                fontSize: 20,
+                fontWeight: 'bold',
+              }}>
+              {t('home.have_you_tried')}
+            </Text>
+          </View>
+          <FlatList
+            data={Events}
+            renderItem={({item}) => <RenderEvents item={item} />}
+            keyExtractor={item => item.id}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -265,5 +295,4 @@ const Styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 10,
   },
-
 });
